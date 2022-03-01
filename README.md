@@ -2,4 +2,5 @@
 
 Alexis Estropia
 - Talayeh Amiri Tokaldany (Tala)
-- Millan Abdella 
+- Jozeah Baptiste
+- Millan Abdella
