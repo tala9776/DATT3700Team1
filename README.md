@@ -1,4 +1,4 @@
 # DATT3700Team1
 
-Alexis Estropia
+- Alexis Estropia (Alex)
 - Talayeh Amiri Tokaldany (Tala)
