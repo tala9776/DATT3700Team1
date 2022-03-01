@@ -1,8 +1,10 @@
 # DATT3700Team1
-# Urshita
 
-Alexis Estropia
+- Alexis Estropia
 - Talayeh Amiri Tokaldany (Tala)
+- Millan Abdella 
+- Urshita
 - Jozeah Baptiste
 - Millan Abdella
 - Hieu Nghiem Minh Le (James)
+
