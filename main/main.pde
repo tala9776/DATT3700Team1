@@ -16,15 +16,7 @@ class Main{
   final int size = colSize * rowSize;
   Branch[] list = new Branch[size];
   
-/*  int sizeX;
-  int sizeY;
-  int[][] branches = new int[sizeX][sizeY];
-  
-  int[][] currentBranch = new int[1][1];
 
-  int indexX;
-  int indexY;
-*/  
 
   void create(){
      for (int i = 0; i < size; i++){
@@ -53,8 +45,40 @@ class Main{
   }
   
   void logic(){
-  // if cubeIn == 
-    
+  /* 
+  
+  updateRate 60/s
+  transSpeed
+  moveSpeed
+  
+  float randChance = rand(0,1);
+  
+  
+  if randChance < 0.75                        =>    float randVal = rand(0,1)
+  else                                        =>    randVal = 1
+  
+  
+  if cubeColorIn == yes                       =>    branchCol = (currentCol + cubeCol)/2 * randVal
+  
+  
+  if 10 > pressure > 5                        =>    branchCol = <color orange> * randVal
+                                                    branchLumin = (branchLumin + 0.2) * randVal
+                                                    move(<away, less> * randVal)
+                                                    
+                                                    
+  if pressure >10                             =>    branchCol = <color red> * randVal
+                                                    branchLumin += 0.5
+                                                    move(<away, more> * randVal)
+  
+ 
+  if pressure < 5                             
+     if time > 3s                             =>    branchCol = cubeColorIn * randVal
+     if time > 8s                             =>    branchCol = cubeColorIn * (randVal * 1.3)
+                                              
+  
+  
+  
+  */  
   
   }
   
@@ -96,11 +120,15 @@ class Branch{
   int colG;
   int colB;
   int brightness;  
+  int[] col = new int[4];
+  
+  
+  
   
   int moveX;
   int moveY;
   int moveZ;
-
+  int movSpeed;
   
     public Branch(){
     
@@ -108,14 +136,21 @@ class Branch{
     }
     
     public void setColor(int red, int green, int blue,int lumin){
-      colR = red;
-      colG = green;
-      colB = blue;
-      brightness = lumin;
+      this.col[0] = red;
+      this.col[1] = green;
+      this.col[2] = blue;
+      this.col[3] = lumin;
     }
     
-    public void move(int moveX, int moveY, int moveZ){
-      
+    public int[] getColor(){
+      return this.col;
+    }
+    
+    public void move(int moveX, int moveY, int moveZ, int movSpeed){
+      this.moveX = moveX;
+      this.moveY = moveY;
+      this.moveZ = moveZ;
+      this.movSpeed = movSpeed;
     }
     
 }
