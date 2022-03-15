@@ -25,16 +25,6 @@ class Main{
   }
 
   
-  void setColor(int red, int green, int blue, int lumin){
-  
-    
-  }
-  
-  void getColor(){
-    
-    
-    
-  }
   
   void move(int x, int y, int z){
     
@@ -132,6 +122,15 @@ class Branch{
   
     public Branch(){
     
+      this.col[0] = 0;
+      this.col[1] = 0;
+      this.col[2] = 0;
+      this.col[3] = 0;
+      
+      this.moveX = 0;
+      this.moveY = 0;
+      this.moveZ = 0;
+      this.movSpeed = 0;
     
     }
     
