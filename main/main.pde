@@ -22,6 +22,7 @@ class Main extends TimerTask {
   
   Branch[] list = new Branch[size];
   
+  int refreshRate = 30;
 
 
   void create(){
