@@ -6,7 +6,7 @@ import java.util.TimerTask;
 import processing.serial.*;
 import mqtt.*;
 
-class Main extends TimerTask {
+class Main {
     
   int colR;
   int colG;
@@ -16,24 +16,27 @@ class Main extends TimerTask {
   float moveY;
   float moveZ;
   
-  static final int colSize = 5;
-  static final int rowSize = 5;
-  static final int size = colSize * rowSize; 
+  final int colSize = 5;
+  final int rowSize = 5;
+  final int size = colSize * rowSize; 
   
   
   
-  static Branch[] list = new Branch[size];
+  Branch[] list = new Branch[size];
   
-  static final int refreshRate = 30;
+  final int refreshRate = 30;
 
 
-  static void create(){
+  void create(){
      for (int i = 0; i < size; i++){
        list[i] = new Branch();
      }
   }
   
-    void logic(){
+  class Logic extends TimerTask{
+    
+    public void run(){}
+    
       
   /* 
   
@@ -74,15 +77,18 @@ class Main extends TimerTask {
   
 
   
-  public static void main(){
+  public void main(){
     Timer timer = new Timer();
     create();
+    timer.schedule(new Logic(), 0, 1000/60);
   }   
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  
   
   
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,7 +99,7 @@ class Input{
   
     private boolean[] sides = new boolean[5];
     private String[] sideNames = {"Top", "Left", "Front", "Right", "Back"};
-    private boolean pressence;
+    private boolean pressence = false;
     
     private boolean touch;
     private float sens;
@@ -178,10 +184,6 @@ class Input{
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 
 
 
