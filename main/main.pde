@@ -6,7 +6,7 @@ import java.util.TimerTask;
 import processing.serial.*;
 import mqtt.*;
 
-class Main {
+class MainApp {
     
   int colR;
   int colG;
@@ -16,26 +16,24 @@ class Main {
   float moveY;
   float moveZ;
   
-  final int colSize = 5;
-  final int rowSize = 5;
-  final int size = colSize * rowSize; 
+  static final int colSize = 5;
+  static final int rowSize = 5;
+  static final int size = colSize * rowSize; 
   
   
   
-  Branch[] list = new Branch[size];
+  static Branch[] list = new Branch[size];
   
   final int refreshRate = 30;
 
 
-  void create(){
+  public static void create(){
      for (int i = 0; i < size; i++){
        list[i] = new Branch();
      }
   }
   
-  class Logic extends TimerTask{
-    
-    public void run(){}
+  
     
       
   /* 
@@ -73,11 +71,11 @@ class Main {
   
   */  
   
-    }
+
   
 
   
-  public void main(){
+  public static void main(){
     Timer timer = new Timer();
     create();
     timer.schedule(new Logic(), 0, 1000/60);
@@ -88,7 +86,10 @@ class Main {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
-  
+class Logic extends TimerTask{
+    
+    public void run(){}
+}
   
   
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
