@@ -32,28 +32,28 @@ void setup() {
 }
 
 void input(){
-  this.distance1 = sharp1.getDistance();
-  this.distance2 = sharp2.getDistance();
-  this.distance3 = sharp3.getDistance();
-  this.distanceAvg = (distance1 + distance2 + distance3) / 3;
+  distance1 = sharp1.getDistance();
+  distance2 = sharp2.getDistance();
+  distance3 = sharp3.getDistance();
+  distanceAvg = (distance1 + distance2 + distance3) / 3;
   
-  if (20 > this.distanceAvg > 10){
-    
+  if (20 > distanceAvg > 10){
+    moodCode = "NEUTRAL";
   }
 
-  if (10 > this.distanceAvg > 5){
-  
+  if (10 > distanceAvg > 5){
+    moodCode = "HAPPY";
   }
 
-  if (this.distanceAvg < 5) {
-  
+  if (distanceAvg < 5) {
+    moodCode = "ANXIETY";
   }
 
 }
 void loop() {
   if( moodCode == "HAPPY" ){
     for (pos = 0; pos <= 180; pos += 0.5) { // goes from 0 degrees to 180 degrees
-      // in steps of 1 degree
+                                      // in steps of 1 degree
       myservo.write(pos);              // tell servo to go to position in variable 'pos'
       delay(15);                       // waits 15 ms for the servo to reach the position
     }
