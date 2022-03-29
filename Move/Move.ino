@@ -53,8 +53,8 @@ void loop() {
   
   long currPos1 = myservo1.read();
   long currPos2 = myservo2.read();
-  long posMin = 0;
-  long posMax = 180;
+  long posMin = 45;
+  long posMax = 135;
 
   if (distanceAvg > 30){
     moodCode = "SAD";
@@ -150,32 +150,32 @@ void loop() {
         }
         break;
       case 2:
-        for (pos1 = currPos1; pos1 <= 40; pos1 += 3) { 
+        for (pos1 = currPos1; pos1 <= 90; pos1 += 3) { 
           myservo1.write(pos1);              
           delay(15);                       
         }
-        for (pos1 = 40; pos1 >= posMin; pos1 -= 3) { 
+        for (pos1 = 90; pos1 >= posMin; pos1 -= 3) { 
           myservo1.write(pos1);              
           delay(15);                       
         }
-        for (pos2 = currPos2; pos2 <= 40; pos2 += 3) { 
+        for (pos2 = currPos2; pos2 <= 90; pos2 += 3) { 
           myservo1.write(pos2);              
           delay(15);                       
         }
-        for (pos2 = 40; pos2 >= posMin; pos2 -= 3) { 
+        for (pos2 = 90; pos2 >= posMin; pos2 -= 3) { 
           myservo1.write(pos2);              
           delay(15);                       
         }
         break;
       case 3:
-        for (pos1 = currPos1; pos1 <= 60; pos1 += 3) { 
+        for (pos1 = currPos1; pos1 <= 120; pos1 += 3) { 
           pos2 = currPos2;
           myservo1.write(pos1);      
           myservo2.write(pos2);
           pos2 -= 3;        
           delay(15);                       
         }
-        for (pos1 = 40; pos1 >= posMin; pos1 -= 3) { 
+        for (pos1 = 120; pos1 >= posMin; pos1 -= 3) { 
           pos2 = currPos2;
           myservo1.write(pos1);            
           myservo2.write(pos2);
