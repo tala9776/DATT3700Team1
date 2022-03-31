@@ -112,18 +112,41 @@ void loop() {
         break;  
 
       case 1:
-        
+        for (pos1 = currPos1; pos1 <= posMax; pos1 += 3) { 
+          myservo1.write(pos1);              
+          delay(15);                       
+        }
+        for (pos1 = posMax; pos1 >= posMin; pos1 -= 3) { 
+          myservo1.write(pos1);              
+          delay(15);                       
+        }
+        for (pos2 = currPos2; pos2 <= posMax; pos2 += 3) { 
+          myservo2.write(pos2);              
+          delay(15);                       
+        }
+        for (pos2 = posMax; pos2 >= posMin; pos2 -= 3) { 
+          myservo2.write(pos2);              
+          delay(15);                       
+        }
         break;
-        
+      case 2:
+        for (pos1 = currPos1; pos1 <= posMax; pos1 += 1) { 
+          pos2 = currPos2;
+          myservo1.write(pos1);      
+          myservo2.write(pos2);
+          pos2 += 1;        
+          delay(15);                       
+        }
+        for (pos1 = posMax; pos1 >= posMin; pos1 -= 1) { 
+          pos2 = currPos2;
+          myservo1.write(pos1);            
+          myservo2.write(pos2);
+          pos2 -= 1;  
+          delay(15);                       
+        }
+        break;  
     }
-    for (pos1 = currPos1; pos1 <= posMax; pos1 += 3) { 
-        myservo1.write(pos1);              
-        delay(15);                       
-    }
-    for (pos1 = posMax; pos1 >= posMin; pos1 -= 3) { 
-        myservo1.write(pos1);              
-        delay(15);                       
-    }
+
   }
 ////////////////////////////////////////////////////////////////////  
   if( moodCode == "NEUTRAL"){
