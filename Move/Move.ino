@@ -60,12 +60,16 @@ void loop() {
     moodCode = "SAD";
   }
   
-  if (30 > distanceAvg > 20){
+  if (30 > distanceAvg > 25){
     moodCode = "NEUTRAL";
   }
 
-  if (20 > distanceAvg > 10){
+  if (25 > distanceAvg > 20){
     moodCode = "HAPPY";
+  }
+
+  if (20 > distanceAvg > 10){
+    moodCode = "PLAYFUL";  
   }
 
   if (distanceAvg < 10) {
@@ -77,20 +81,24 @@ void loop() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   if( moodCode == "HAPPY" ){
-    for (pos1 = currPos1; pos1 <= posMax; pos1 += 2) {   
-      myservo1.write(pos1);
-      myservo2.write(pos1);                                  
-      delay(15);                            
-    }                                       
-    for (pos1 = posMax; pos1 >= posMin; pos1 -= 2) { 
-      myservo1.write(pos1);       
-      myservo2.write(pos1);       
+    for (pos1 = currPos1; pos1 <= posMax; pos1 += 1) { 
+      pos2 = currPos2;
+      myservo1.write(pos1);      
+      myservo2.write(pos2);
+      pos2 += 1;        
+      delay(15);                       
+    }
+    for (pos1 = posMax; pos1 >= posMin; pos1 -= 1) { 
+      pos2 = currPos2;
+      myservo1.write(pos1);            
+      myservo2.write(pos2);
+      pos2 -= 1;  
       delay(15);                       
     }
   }
 ////////////////////////////////////////////////////////////////////
   if( moodCode == "PLAYFUL" ){
-    randNumber = random(0,3);
+    randNumber = random(0,2);
     switch(randNumber){
       case 0:
         for (pos1 = currPos1; pos1 <= 60; pos1 += 3){
@@ -130,18 +138,18 @@ void loop() {
         }
         break;
       case 2:
-        for (pos1 = currPos1; pos1 <= posMax; pos1 += 1) { 
+        for (pos1 = currPos1; pos1 <= posMax; pos1 += 2) { 
           pos2 = currPos2;
           myservo1.write(pos1);      
           myservo2.write(pos2);
-          pos2 += 1;        
+          pos2 += 2;        
           delay(15);                       
         }
-        for (pos1 = posMax; pos1 >= posMin; pos1 -= 1) { 
+        for (pos1 = posMax; pos1 >= posMin; pos1 -= 2) { 
           pos2 = currPos2;
           myservo1.write(pos1);            
           myservo2.write(pos2);
-          pos2 -= 1;  
+          pos2 -= 2;  
           delay(15);                       
         }
         break;  
