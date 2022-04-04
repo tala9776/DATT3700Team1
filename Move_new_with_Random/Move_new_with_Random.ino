@@ -108,21 +108,38 @@ void loop() {
   }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
   if( moodCode == "PLAYFUL" ){
-    for (pos1 = posMin; pos1 <= posMax; pos1 += 1) { // goes from 0 degrees to 180 degrees in steps of 1 degree
-      myservo1.write(pos1);                           // tell servo to go to position in variable 'pos'
-      delay(15);                                     // waits 15 ms for the servo to reach the position
-    }
-    for (pos1 = posMax; pos1 >= posMin; pos1 -= 1) { // goes from 180 degrees to 0 degrees
-      myservo1.write(pos1);                           // tell servo to go to position in variable 'pos'
-      delay(15);                                     // waits 15 ms for the servo to reach the position
-    }
-    for (pos2 = posMin; pos2 <= posMax; pos2 += 1) { // goes from 0 degrees to 180 degrees in steps of 1 degree
-      myservo2.write(pos2);                           // tell servo to go to position in variable 'pos'
-      delay(15);                                     // waits 15 ms for the servo to reach the position
-    }
-    for (pos2 = posMax; pos2 >= posMin; pos2 -= 1) { // goes from 180 degrees to 0 degrees
-      myservo2.write(pos2);                           // tell servo to go to position in variable 'pos'
-      delay(15);                                     // waits 15 ms for the servo to reach the position
+    randNumber = random(0,1);
+    switch(randNumber){
+      case 0:
+        for (pos1 = posMin; pos1 <= posMax; pos1 += 1) { // goes from 0 degrees to 180 degrees in steps of 1 degree
+          myservo1.write(pos1);                           // tell servo to go to position in variable 'pos'
+          delay(15);                                     // waits 15 ms for the servo to reach the position
+        }
+        for (pos1 = posMax; pos1 >= posMin; pos1 -= 1) { // goes from 180 degrees to 0 degrees
+          myservo1.write(pos1);                           // tell servo to go to position in variable 'pos'
+          delay(15);                                     // waits 15 ms for the servo to reach the position
+        }
+        for (pos2 = posMin; pos2 <= posMax; pos2 += 1) { // goes from 0 degrees to 180 degrees in steps of 1 degree
+          myservo2.write(pos2);                           // tell servo to go to position in variable 'pos'
+          delay(15);                                     // waits 15 ms for the servo to reach the position
+        }
+        for (pos2 = posMax; pos2 >= posMin; pos2 -= 1) { // goes from 180 degrees to 0 degrees
+          myservo2.write(pos2);                           // tell servo to go to position in variable 'pos'
+          delay(15);                                     // waits 15 ms for the servo to reach the position
+        }
+        break;
+
+      case 1:
+        for (pos1 = posMin; pos1 <= posMax; pos1 += 2) { // goes from 0 degrees to 180 degrees in steps of 1 degree
+          myservo1.write(pos1); 
+          myservo2.write(pos2);                           // tell servo to go to position in variable 'pos'
+          delay(15);                                     // waits 15 ms for the servo to reach the position
+        }
+        for (pos1 = posMax; pos1 >= posMin; pos1 -= 2) { // goes from 180 degrees to 0 degrees
+          myservo1.write(pos1);                           // tell servo to go to position in variable 'pos'
+          myservo2.write(pos2);
+          delay(15);                                     // waits 15 ms for the servo to reach the position
+        }
     }
   }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
