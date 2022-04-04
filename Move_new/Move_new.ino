@@ -33,7 +33,7 @@ float distanceAvg;
 //String moodCode = "NEUTRAL";
 void setup() {
   myservo1.attach(9);  // attaches the servo on pin 9 to the servo object
-  myservo2.attach(8);
+  myservo2.attach(10);
 }
 
 void loop() {
