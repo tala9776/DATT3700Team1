@@ -30,7 +30,7 @@ float distance1;
 float distance2;
 float distance3;
 float distanceAvg;
-String moodCode = "NEUTRAL";
+//String moodCode = "NEUTRAL";
 void setup() {
   myservo1.attach(9);  // attaches the servo on pin 9 to the servo object
   myservo2.attach(8);
@@ -83,12 +83,14 @@ void loop() {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
   if( moodCode == "NEUTRAL" ){
     for (pos1 = posMin; pos1 <= posMax; pos1 += 1) { // goes from 0 degrees to 180 degrees in steps of 1 degree
-      myservo1.write(pos1); 
+      myservo1.write(pos1);
+      pos1 = pos2; 
       myservo2.write(pos2);                           // tell servo to go to position in variable 'pos'
       delay(90);                                     // waits 15 ms for the servo to reach the position
     }
     for (pos1 = posMax; pos1 >= posMin; pos1 -= 1) { // goes from 180 degrees to 0 degrees
       myservo1.write(pos1);                           // tell servo to go to position in variable 'pos'
+      pos1 = pos2;
       myservo2.write(pos2);
       delay(90);                                     // waits 15 ms for the servo to reach the position
     }
@@ -97,11 +99,13 @@ void loop() {
   if( moodCode == "SAD" ){
     for (pos1 = posMin; pos1 <= posMax; pos1 += 1) { // goes from 0 degrees to 180 degrees in steps of 1 degree
       myservo1.write(pos1); 
+      pos1 = pos2;
       myservo2.write(pos2);                           // tell servo to go to position in variable 'pos'
       delay(180);                                     // waits 15 ms for the servo to reach the position
     }
     for (pos1 = posMax; pos1 >= posMin; pos1 -= 1) { // goes from 180 degrees to 0 degrees
       myservo1.write(pos1);                           // tell servo to go to position in variable 'pos'
+      pos1 = pos2;
       myservo2.write(pos2);
       delay(180);                                     // waits 15 ms for the servo to reach the position
     }
