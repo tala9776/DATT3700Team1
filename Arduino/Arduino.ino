@@ -61,7 +61,6 @@ void loop() {
         sinelon();
         addGlitter(2);
         FastLED.show();
-        }
       }else if ( allSensors == 1) {
         happy();
         bpm();
