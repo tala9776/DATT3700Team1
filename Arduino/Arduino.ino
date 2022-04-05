@@ -1,6 +1,5 @@
 long timeBlock = 0; 
 long timeBlock2 = 0;
-#include <SharpIR.h>
 #include <FastLED.h>
 #include <Servo.h>
 #define NUM_LEDS 8
@@ -10,9 +9,13 @@ long timeBlock2 = 0;
 
 CRGB leds[NUM_LEDS];
 
-SharpIR sensor1( SharpIR::GP2Y0A41SK0F, A0 );
-SharpIR sensor2( SharpIR::GP2Y0A41SK0F, A1 );
-SharpIR sensor3( SharpIR::GP2Y0A41SK0F, A2 );
+const int button1 = 4;
+const int button2 = 5;
+const int button3 = 6;
+
+int button1State = 0;
+int button2State = 0;
+int button3State = 0;
 
 Servo myservo1;
 Servo myservo2;
@@ -26,15 +29,20 @@ char sensorThree;
 
 
 uint8_t gHue = 0;
-
 const int WRITE_CYCLE = 1000; // Would write TO Max every 1000 ms
 
 void setup() {  
   Serial.begin(9600);  // Should be the same baud rate as on Max
   Serial.println("A");  // Just for test
   myservo1.attach(9);
+  myservo2.attach(10);
   FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
   FastLED.setBrightness(100);
+  pinMode(button1,INPUT);
+  pinMode(button2,INPUT);
+  pinMode(button3,INPUT);
+  
+  
 }
 
 void loop() {    
@@ -50,64 +58,38 @@ void loop() {
       
       if( allSensors == 0) {
         sad();
-        for (int j = 0; j < NUM_LEDS; j++){  //SAD
-          sinelon();
-          addGlitter(2);
-          FastLED.show();
+        sinelon();
+        addGlitter(2);
+        FastLED.show();
         }
       }else if ( allSensors == 1) {
         happy();
-        for (int j = 0; j < NUM_LEDS; j++){   //HAPPY
-          bpm();
-          addGlitter(12);
-          FastLED.show();
-        }
+        bpm();
+        addGlitter(12);
+        FastLED.show();
       }else if ( allSensors == 2) {
         happier();
-        for (int j = 0; j < NUM_LEDS; j++){     //HAPPIER
-          confetti();
-          FastLED.show();
-        }
+        confetti();
+        FastLED.show();
       }else if (allSensors == 3) {
         anxious();
-        for (int j = 0; j < NUM_LEDS; j++){  //Anxies
-          leds[j] = CHSV(0, 0, 0);
-          addGlitter2(30);
-          addGlitter(15);
-          FastLED.show();
-        }
+        addGlitter2(30);
+        addGlitter(15);
+        FastLED.show();
       }
-      
-//      if( sensorTwo < 30 && sensorOne < 30) {
-//         s = map (sensorTwo, 3, 29, 20, 255);
-//         h = map (sensorOne, 3, 29, 20, 255);
-//         for (int j = 0; j < NUM_LEDS; j++){
-//          leds[j] = CRGB(h, 0, s);
-//          FastLED.show();
-//         }
-//      }else {
-//          for (int j = 0; j < NUM_LEDS; j++){
-//          leds[j] = CRGB(0, 50, 0);
-//          FastLED.show();
-//          }
-//      }
     }
-    
+  EVERY_N_MILLISECONDS( 5 ) { gHue++; }
   
   if(millis()-timeBlock2>WRITE_CYCLE){   
-            
-    int dist1 = sensor1.getDistance();  
-    int dist2 = sensor2.getDistance();
-    int dist3 = sensor3.getDistance();
-    String toSend1 = String(dist1);
-    String toSend2 = String(dist2);
-    String toSend3 = String(dist3);
-    
-    Serial.println(toSend1);
+    button1State = digitalRead(button1);
+    button2State = digitalRead(button2);
+    button3State = digitalRead(button3);
+
+    Serial.print(button1State);
     Serial.print(" "); 
-    Serial.print(toSend2);
+    Serial.print(button2State);
     Serial.print(" ");
-    Serial.println(toSend3);
+    Serial.println(button3State);
     
     timeBlock2=millis();
   }
